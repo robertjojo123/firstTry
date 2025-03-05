@@ -175,9 +175,20 @@ getBlockData = function(block)
 end
 
 -- ✅ **Restock Function**
+-- ✅ **Material Chest Storage Levels**
+getChestYLevel = function(block)
+    local blockYLevels = {
+        ["wool"] = 1, ["grass"] = 2, ["dirt"] = 3, ["cobblestone"] = 4, ["clay"] = 5,
+        ["stone"] = 6, ["sand"] = 7, ["glass"] = 8, ["oak_planks"] = 9, ["spruce_planks"] = 10, 
+        ["bricks"] = 11, ["quartz_block"] = 12
+    }
+    return blockYLevels[block] or 13
+end
+
+-- ✅ **Restock Function**
 restock = function(block)
     local blockID = getBlockData(block)  
-    local chestY = getChestYLevel(block)  
+    local chestY = getChestYLevel(block)  -- ✅ Now correctly defined before use
     local chestPos = {x = 5, y = chestY, z = -5}
 
     print("🔄 Moving to restock", blockID)
